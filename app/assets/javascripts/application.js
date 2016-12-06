@@ -11,6 +11,14 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).on('turbolinks:load', function() {
+ $(document).on('ajax:success', '.like', function(xhr, data, status) {
+   $('.likes').html(data);
+ });
+});
