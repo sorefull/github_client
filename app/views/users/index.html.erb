@@ -1,0 +1,17 @@
+<% if @users['errors'].present? %>
+  <%= @users['errors'] %>
+<% elsif @users['items'].empty? %>
+  No results for <%= params['name'] %>
+<% else %>
+<div class="container">
+  <div class="row">
+    <% @users['items'].each do |user| %>
+      <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3">
+        <%= link_to user_path(user['login']) do %>
+          <%= image_tag(user['avatar_url']+'&s=100', style: 'max-width: 100px', title: user['login']) %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+</div>

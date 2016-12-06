@@ -1,0 +1,22 @@
+<div style="font-size:700%">
+  <%= @repo['name'].capitalize %>
+  <%= link_to @repo['html_url'] do %>
+    <%= image_tag('https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg', style: 'max-width: 50px') %>
+  <% end %>
+</div>
+<p>
+  Owner <%= link_to @repo['owner']['login'], user_path(@repo['owner']['login']) %><br>
+  <%= @repo['description'] %>
+</p>
+<div class="container">
+  <div class="row">
+    <h2>Contributors:</h2>
+    <% @repo['contributors'].each do |contributor| %>
+      <div class="col-lg-1 col-md-1 col-sm-2 col-xs-3">
+        <%= link_to user_path(contributor['login']) do %>
+          <%= image_tag(contributor['avatar_url']+'&s=100', style: 'max-width: 100px', title: contributor['login']) %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

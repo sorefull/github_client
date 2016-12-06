@@ -1,0 +1,19 @@
+<% if @repos['errors'].present? %>
+  <%= @repos['errors'] %>
+<% elsif @repos['items'].empty? %>
+  No results for <%= params['name'] %>
+<% else %>
+  <% @repos['items'].each do |repo| %>
+    <h3>
+      <span class="glyphicon glyphicon-folder-open">
+      <%= link_to repo['name'], repo_path([repo['owner']['login'], repo['name']]) %><br>
+    </h3>
+    <div style="color: #767676">
+      <%= repo['description'] %>
+    </div>
+    <div style="color: #767676; font-size: 12px">
+      <%= repo['language'] %>
+    </div>
+    <hr width='50%' align='left'>
+  <% end %>
+<% end %>

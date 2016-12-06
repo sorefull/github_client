@@ -1,0 +1,11 @@
+<div style="font-size:700%">
+  @<%= @user['login'] %>
+  <%= link_to @user['html_url'] do %>
+    <%= image_tag('https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg', style: 'max-width: 50px') %>
+  <% end %>
+</div>
+<p><%= @user['bio'] %></p>
+<%= image_tag(@user['avatar_url']+'&s=200', style: 'max-width: 200px') %><br>
+<% @user['user_repos'].each do |repo| %>
+  <%= link_to repo['name'], repo_path([repo['owner']['login'], repo['name']]) %><br>
+<% end %>
