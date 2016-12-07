@@ -6,12 +6,14 @@
 </div>
 <div class="likes">
   <%= @likes.count %>
-  <% unless current_user.liked? @user['login'] %>
-    <%= link_to like_user_path(@user['login']), method: :post, class: 'like', remote: true  do %>
-      <span class="glyphicon glyphicon-thumbs-up">
+  <% if user_signed_in? %>
+    <% unless current_user.liked? @user['login'] %>
+      <%= link_to like_user_path(@user['login']), method: :post, class: 'like', remote: true  do %>
+        <span class="glyphicon glyphicon-thumbs-up">
+      <% end %>
+    <% else %>
+      <span class="glyphicon glyphicon-thumbs-up green">
     <% end %>
-  <% else %>
-    <span class="glyphicon glyphicon-thumbs-up" style="color: green;">
   <% end %>
 </div>
 

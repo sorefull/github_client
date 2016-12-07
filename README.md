@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a client working with Github's API. Although there is like ability for users and repositories. Feel free to use it and have a nice day.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Nice to see that you are interested to try my application.
 
-* System dependencies
+First need to clone it:
 
-* Configuration
+`
+git clone https://github.com/sorefull/github_client.git && cd github_client
+`
 
-* Database creation
+Secondly you need to bundle it and migrate database:
 
-* Database initialization
+`
+bundle install && rails db:migrate
+`
 
-* How to run the test suite
+Sadly GitHub API allows only 50 requests per hour for a non-authorized user. To increase the limit to 5000 requests/hour, I am using Basic Authorization headers. To use my app with higher limit you need to [create oath application](https://github.com/settings/applications/new) and set Client ID with Client Secret in `config/application.yml` as it is shown in `application.example.yml`.
 
-* Services (job queues, cache servers, search engines, etc.)
+All is done and you can finally serve application:
 
-* Deployment instructions
-
-* ...
+`
+rails server
+`

@@ -30,7 +30,7 @@
       <% if controller_name == 'users' || controller_name == 'repos' %>
         <%= form_tag("/#{controller_name}", method: "get", class: 'navbar-form navbar-right') do %>
         <div class="form-group">
-          <%= text_field_tag :name, '', class: 'form-control' %>
+          <%= text_field_tag :name, '', class: 'form-control', placeholder: "Search for #{controller_name}..." %>
         </div>
           <%= submit_tag "Search", class: 'btn btn-default' %>
         <% end %>
